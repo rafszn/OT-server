@@ -3,6 +3,7 @@ require("dotenv").config();
 const { TicketOrderModel, TicketModel } = require("../model/tiket.model");
 const generateTicketCode = require("./generateTicketCode");
 const asyncHandler = require("./asyncHandler");
+const verifyPaystackReference = require("./verifyPaystackReference");
 
 exports.handlePaystackWebhook = asyncHandler(async (req, res) => {
   const paystackSignature = req.headers["x-paystack-signature"];
@@ -64,4 +65,23 @@ exports.handlePaystackWebhook = asyncHandler(async (req, res) => {
   }
 
   return res.status(200).send("Webhook received");
+});
+
+exports.handlePaystackCallback = asyncHandler(async (req, res) => {
+  const { reference } = req.query;
+
+  if (!reference) {
+    throw new CustomError("Payment reference is required", 400);
+  }
+
+  const paymentData = await verifyPaystackReference(reference);
+
+  return res.status(200).json({
+    success: true,
+    paymentStatus: paymentData.status,
+    message:
+      paymentData.status === "success"
+        ? "Payment successful"
+        : "Payment not successful",
+  });
 });

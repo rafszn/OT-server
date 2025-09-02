@@ -7,7 +7,10 @@ const cookieParser = require("cookie-parser");
 const corsOptions = require("./lib/corsOptions");
 const notFound = require("./lib/notFound");
 const { checkout } = require("./lib/initiatePayment");
-const { handlePaystackWebhook } = require("./lib/handlePaystackWebhook");
+const {
+  handlePaystackWebhook,
+  handlePaystackCallback,
+} = require("./lib/handlePaystackWebhook");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -31,6 +34,7 @@ app.post(
 //routes
 app.use(express.json());
 app.post("/v1/checkout", checkout);
+app.get("/v1/checkout/callback", handlePaystackCallback);
 
 //404 route
 app.use(notFound);
