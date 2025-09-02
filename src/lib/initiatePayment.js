@@ -1,7 +1,6 @@
 const { TicketOrderModel } = require("../model/tiket.model");
 const asyncHandler = require("./asyncHandler");
 const { initializePayment } = require("./initializePayment");
-const crypto = require("crypto");
 
 exports.checkout = asyncHandler(async (req, res) => {
   const { firstName, lastName, email, ticketType, price, quantity, total } =
@@ -21,7 +20,12 @@ exports.checkout = asyncHandler(async (req, res) => {
       .json({ success: false, message: "All fields are required" });
   }
 
-  const reference = crypto.randomBytes(8).toString("hex");
+  const metadata = {};
+  const initResponse = await initializePayment({
+    email,
+    amount: total,
+    metadata,
+  });
 
   await TicketOrderModel.create({
     firstName,
@@ -31,14 +35,7 @@ exports.checkout = asyncHandler(async (req, res) => {
     price,
     quantity,
     total,
-    paymentReference: reference,
-  });
-
-  const metadata = {};
-  const initResponse = await initializePayment({
-    email,
-    amount: total,
-    metadata,
+    paymentReference: initResponse.data.reference,
   });
 
   res.status(200).json({
