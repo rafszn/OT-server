@@ -21,11 +21,11 @@ app.get("/", (req, res) => {
   });
 });
 
-// app.post(
-//   "/v1/checkout/paystack/webhook",
-//   express.raw({ type: "application/json" }),
-//   handlePaystackWebhook
-// );
+app.post(
+  "/v1/checkout/paystack/webhook",
+  express.raw({ type: "application/json" }),
+  handlePaystackWebhook
+);
 
 //routes
 app.use(express.json());
