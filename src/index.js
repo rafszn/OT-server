@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const corsOptions = require("./lib/corsOptions");
 const notFound = require("./lib/notFound");
 const { checkout } = require("./lib/initiatePayment");
+const { handlePaystackWebhook } = require("./lib/handlePaystackWebhook");
 
 const app = express();
 const PORT = process.env.PORT || 8080;

@@ -2,6 +2,8 @@ const crypto = require("crypto");
 require("dotenv").config();
 const { TicketOrderModel, TicketModel } = require("../model/tiket.model");
 const generateTicketCode = require("./generateTicketCode");
+const asyncHandler = require("./asyncHandler");
+
 exports.handlePaystackWebhook = asyncHandler(async (req, res) => {
   const paystackSignature = req.headers["x-paystack-signature"];
   const secret = process.env.PAYSTACK_SECRET_KEY;
