@@ -1,5 +1,5 @@
 const dotenv = require("dotenv");
-const { transporter } = require("./config");
+const transporter = require("./config");
 dotenv.config();
 
 const sendMail = async ({ html, email, firstName }) => {
