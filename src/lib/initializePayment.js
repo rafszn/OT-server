@@ -10,7 +10,7 @@ exports.initializePayment = async ({ email, amount, metadata }) => {
       email,
       amount: amount * 100, // Paystack expects amount in kobo
       metadata,
-      callback_url: `http://localhost:5173/checkout`, 
+      callback_url: `https://ot-25.vercel.app/checkout`, 
     },
     {
       headers: {
