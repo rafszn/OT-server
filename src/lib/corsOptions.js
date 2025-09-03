@@ -1,9 +1,8 @@
 const whitelists = [
   "http://localhost:5174",
   "http://localhost:5173",
-  "https://vote-naija-ui.vercel.app",
-  "https://votenaija.ng",
-  "https://agrohive.co",
+  "https://ot-25.vercel.app",
+  "https://owerritechies.com",
 ];
 
 const corsOptions = {
