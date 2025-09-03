@@ -8,7 +8,7 @@ const sendSponsorMail = async ({ html }) => {
       name: "OWERRI TECHIES HANGOUT",
       address: process.env.EMAIL,
     },
-    to: "dikachifavour10@gmail.com",
+    to: "Owerritechies@gmail.com",
     subject: `New Sponsorship Request`,
     html: html,
   };
