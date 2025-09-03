@@ -101,8 +101,8 @@ exports.handlePaystackWebhook = asyncHandler(async (req, res) => {
 </body>
 </html>
 `;
+    await sendMail({ html, email: order.email, firstName: order.firstName });
   }
-  await sendMail({ html, email: order.email, firstName: order.firstName });
 
   return res.status(200).send("Webhook received");
 });
