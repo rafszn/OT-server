@@ -6,6 +6,7 @@ const asyncHandler = require("./asyncHandler");
 const verifyPaystackReference = require("./verifyPaystackReference");
 const { generateTicketRows } = require("./groupTicketsInPairs");
 const sendMail = require("../nodemailer/sendMail");
+const { capitalizeString } = require("./capString");
 
 exports.handlePaystackWebhook = asyncHandler(async (req, res) => {
   const paystackSignature = req.headers["x-paystack-signature"];
@@ -78,19 +79,23 @@ exports.handlePaystackWebhook = asyncHandler(async (req, res) => {
   <div style="max-width:600px;margin:auto;background:#ffffff;border:1px solid #eee;padding:20px;border-radius:8px;">
     <h2 style="text-align:center;color:#333;margin-top:0">🎟 Your Ticket Receipt</h2>
     <p style="text-align:center;color:#555;font-size:14px">
-      Hello <strong>${order.firstName} ${order.lastName}</strong>, thank you for your purchase! Below are your ticket details:
+      Hello <strong>${capitalizeString(order.firstName)} ${capitalizeString(
+      order.lastName
+    )}</strong>, thank you for your purchase! Below are your ticket details:
     </p>
 
     <table role="presentation" width="100%" cellspacing="0" cellpadding="8" border="0" style="margin:20px 0;border:1px solid #ddd;border-radius:6px;">
-      <tr><td style="font-size:14px;color:#555">Ticket Type:</td><td style="font-size:14px;font-weight:bold;color:#333">${order.ticketType}</td></tr>
+      <tr><td style="font-size:14px;color:#555">Ticket Type:</td><td style="font-size:14px;font-weight:bold;color:#333">${
+        order.ticketType
+      }</td></tr>
        <tr>
           <td style="font-size: 14px; color: #555">Price per ticket:</td>
           <td style="font-size: 14px; font-weight: bold; color: #333">
-            ₦${order.price}
+            ₦${order.price.toLocaleString()}
           </td>
         </tr>
-      <tr><td style="font-size:14px;color:#555">Quantity:</td><td style="font-size:14px;font-weight:bold;color:#333">${tickets.length}</td></tr>
-      <tr><td style="font-size:14px;color:#555">Total Paid:</td><td style="font-size:14px;font-weight:bold;color:#333">₦${order.total}</td></tr>
+      <tr><td style="font-size:14px;color:#555">Quantity:</td><td style="font-size:14px;font-weight:bold;color:#333">${tickets.length?.toLocaleString()}</td></tr>
+      <tr><td style="font-size:14px;color:#555">Total Paid:</td><td style="font-size:14px;font-weight:bold;color:#333">₦${order.total.toLocaleString()}</td></tr>
     </table>
 
     <h3 style="margin-top:20px;color:#333">🎟 Your Tickets</h3>
