@@ -106,8 +106,12 @@ exports.handlePaystackWebhook = asyncHandler(async (req, res) => {
     <hr style="margin:20px 0" />
     <p style="font-size:12px;color:#777;text-align:center">
       Please present your ticket code(s) at the entrance. Each code admits one person.<br />
-      For help, contact <a href="mailto:support@bizvim.com">support@bizvim.com</a>
+      For help, contact <a href="mailto:info@rapid-minds.com">info@rapid-minds.com</a>
     </p>
+     <p style="font-size: 10px; color: #777; text-align: center">
+        Proudly powered by RM-Studios<br />
+        <a href="https://rapid-minds.com">rapid-minds.com</a>
+      </p>
   </div>
 </body>
 </html>
