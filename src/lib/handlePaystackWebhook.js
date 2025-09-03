@@ -83,8 +83,14 @@ exports.handlePaystackWebhook = asyncHandler(async (req, res) => {
 
     <table role="presentation" width="100%" cellspacing="0" cellpadding="8" border="0" style="margin:20px 0;border:1px solid #ddd;border-radius:6px;">
       <tr><td style="font-size:14px;color:#555">Ticket Type:</td><td style="font-size:14px;font-weight:bold;color:#333">${order.ticketType}</td></tr>
+       <tr>
+          <td style="font-size: 14px; color: #555">Price per ticket:</td>
+          <td style="font-size: 14px; font-weight: bold; color: #333">
+            ₦${order.price}
+          </td>
+        </tr>
       <tr><td style="font-size:14px;color:#555">Quantity:</td><td style="font-size:14px;font-weight:bold;color:#333">${tickets.length}</td></tr>
-      <tr><td style="font-size:14px;color:#555">Total Paid:</td><td style="font-size:14px;font-weight:bold;color:#333">₦${order.amount}</td></tr>
+      <tr><td style="font-size:14px;color:#555">Total Paid:</td><td style="font-size:14px;font-weight:bold;color:#333">₦${order.total}</td></tr>
     </table>
 
     <h3 style="margin-top:20px;color:#333">🎟 Your Tickets</h3>
