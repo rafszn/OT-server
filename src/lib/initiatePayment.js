@@ -3,8 +3,16 @@ const asyncHandler = require("./asyncHandler");
 const { initializePayment } = require("./initializePayment");
 
 exports.checkout = asyncHandler(async (req, res) => {
-  const { firstName, lastName, email, ticketType, price, quantity, total } =
-    req.body;
+  const {
+    firstName,
+    lastName,
+    email,
+    ticketType,
+    price,
+    quantity,
+    total,
+    referralCode,
+  } = req.body;
 
   if (
     !firstName ||
@@ -35,6 +43,7 @@ exports.checkout = asyncHandler(async (req, res) => {
     price,
     quantity,
     total,
+    referralCode,
     paymentReference: initResponse.data.reference,
   });
 

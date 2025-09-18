@@ -12,6 +12,7 @@ const {
   handlePaystackCallback,
 } = require("./lib/handlePaystackWebhook");
 const { sponsor } = require("./lib/sponsor");
+const { getDashboardData } = require("./lib/dashboardstats");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -37,6 +38,7 @@ app.use(express.json());
 app.post("/v1/checkout", checkout);
 app.get("/v1/checkout/callback", handlePaystackCallback);
 app.post("/v1/sponsor", sponsor);
+app.get("/v1/dashboard", getDashboardData);
 
 //404 route
 app.use(notFound);

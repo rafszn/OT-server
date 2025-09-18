@@ -15,6 +15,9 @@ const TicketOrderSchema = new mongoose.Schema(
       default: "pending",
     },
     paymentReference: { type: String, required: true, unique: true }, // from Paystack
+    referralCode: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

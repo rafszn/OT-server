@@ -11,6 +11,7 @@ exports.initializePayment = async ({ email, amount, metadata }) => {
       amount: amount * 100, // Paystack expects amount in kobo
       metadata,
       callback_url: `https://owerritechies.com/checkout`,
+      // callback_url: `http://localhost:5173/checkout`,
     },
     {
       headers: {
