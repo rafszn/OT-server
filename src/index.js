@@ -13,6 +13,7 @@ const {
 } = require("./lib/handlePaystackWebhook");
 const { sponsor } = require("./lib/sponsor");
 const { getDashboardData } = require("./lib/dashboardstats");
+const { markTicketAsUsed } = require("./lib/markTicket");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -39,6 +40,7 @@ app.post("/v1/checkout", checkout);
 app.get("/v1/checkout/callback", handlePaystackCallback);
 app.post("/v1/sponsor", sponsor);
 app.get("/v1/dashboard", getDashboardData);
+app.put("/v1/tickets/:ticketId/use", markTicketAsUsed);
 
 //404 route
 app.use(notFound);
