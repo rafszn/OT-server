@@ -1,21 +1,17 @@
 const dotenv = require("dotenv");
-const transporter = require("./config");
+const resend = require("../lib/resend/config");
 dotenv.config();
 
 const sendSponsorMail = async ({ html }) => {
-  const mailOptions = {
-    from: {
-      name: "OWERRI TECHIES HANGOUT",
-      address: process.env.EMAIL,
-    },
-    to: "Owerritechies@gmail.com",
+  const mailOptionsResend = {
+    from: "OWERRI TECHIES HANGOUT <noreply@owerritechies.com>",
+    to: ["Owerritechies@gmail.com"],
     subject: `New Sponsorship Request`,
     html: html,
   };
 
   try {
-    const res = await transporter.sendMail(mailOptions);
-    return res;
+    await resend.emails.send(mailOptionsResend);
   } catch (error) {
     return error.message;
   }

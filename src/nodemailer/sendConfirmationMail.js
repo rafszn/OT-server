@@ -1,20 +1,17 @@
 const dotenv = require("dotenv");
-const transporter = require("./config");
+const resend = require("../lib/resend/config");
 dotenv.config();
 
 const sendConfirmationMail = async ({ html, email, firstName }) => {
-  const mailOptions = {
-    from: {
-      name: "OWERRI TECHIES HANGOUT",
-      address: process.env.EMAIL,
-    },
-    to: email,
+  const mailOptionsResend = {
+    from: "OWERRI TECHIES HANGOUT <noreply@owerritechies.com>",
+    to: [email],
     subject: `Thank you for reaching out – ${firstName}`,
     html: html,
   };
 
   try {
-    const res = await transporter.sendMail(mailOptions);
+    await resend.emails.send(mailOptionsResend);
     return res;
   } catch (error) {
     return error.message;
