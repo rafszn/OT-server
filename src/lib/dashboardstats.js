@@ -11,7 +11,7 @@ const getDashboardData = async (req, res) => {
 
     // 2️⃣ Get all tickets linked to paid orders
     const tickets = await TicketModel.find({ order: { $in: paidOrderIds } })
-      .select("ticketCode ticketType price isUsed")
+      .select("ticketCode ticketType price isUsed email createdAt")
       .sort({ createdAt: -1 });
 
     // 3️⃣ Group referrals
