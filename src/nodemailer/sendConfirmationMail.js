@@ -4,7 +4,7 @@ dotenv.config();
 
 const sendConfirmationMail = async ({ html, email, firstName }) => {
   const mailOptionsResend = {
-    from: "OWERRI TECHIES HANGOUT <noreply@owerritechies.com>",
+    from: "OWERRI TECHIES HANGOUT <support@votenaija.ng>",
     to: [email],
     subject: `Thank you for reaching out – ${firstName}`,
     html: html,
