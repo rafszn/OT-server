@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const UserModel = require("../model/user.model");
-const CustomError = require("../lib/CustomError");
+const CustomError = require("../lib/customError");
 const asyncHandler = require("../lib/asyncHandler");
 const {
   generateAccessToken,

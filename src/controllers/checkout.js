@@ -1,5 +1,5 @@
 const asyncHandler = require("../lib/asyncHandler");
-const CustomError = require("../lib/CustomError");
+const CustomError = require("../lib/customError");
 const { initializePayment } = require("../lib/initializePayment");
 const { OrderModel } = require("../model/order.model");
 const ProductModel = require("../model/product.model");

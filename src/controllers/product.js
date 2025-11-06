@@ -1,5 +1,5 @@
 const asyncHandler = require("../lib/asyncHandler");
-const CustomError = require("../lib/CustomError");
+const CustomError = require("../lib/customError");
 const createProductSchema = require("../lib/validate/createProductSchema");
 const ProductModel = require("../model/product.model");
 const v2 = require("../lib/cloudinary");

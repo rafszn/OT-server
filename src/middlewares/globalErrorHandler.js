@@ -1,4 +1,4 @@
-const CustomError = require("../lib/CustomError");
+const CustomError = require("../lib/customError");
 
 /* eslint-disable no-unused-vars */
 const globalErrorHandler = (err, req, res, next) => {
