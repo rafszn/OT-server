@@ -2,11 +2,11 @@ const dotenv = require("dotenv");
 const resend = require("../lib/resend/config");
 dotenv.config();
 
-const sendMail = async ({ html, email, firstName }) => {
+const sendSellerOrderCreatedMail = async ({ html, email }) => {
   const mailOptionsResend = {
     from: "OWERRI TECHIES HANGOUT <support@votenaija.ng>",
     to: [email],
-    subject: `🎟 Your OTH25 Ticket Confirmation – ${firstName}, You’re In!`,
+    subject: `New Order Received`,
     html: html,
   };
 
@@ -18,4 +18,4 @@ const sendMail = async ({ html, email, firstName }) => {
   }
 };
 
-module.exports = sendMail;
+module.exports = sendSellerOrderCreatedMail;

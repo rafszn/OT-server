@@ -28,7 +28,9 @@ exports.checkout = asyncHandler(async (req, res) => {
       .json({ success: false, message: "All fields are required" });
   }
 
-  const metadata = {};
+  const metadata = {
+    app: "oth-event",
+  };
   const initResponse = await initializePayment({
     email,
     amount: total,

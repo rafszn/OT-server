@@ -2,7 +2,6 @@ require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
 const connectDB = require("./lib/connectDB");
-
 const cookieParser = require("cookie-parser");
 const corsOptions = require("./lib/corsOptions");
 const notFound = require("./lib/notFound");
@@ -14,6 +13,7 @@ const {
 const { sponsor } = require("./lib/sponsor");
 const { getDashboardData } = require("./lib/dashboardstats");
 const { markTicketAsUsed } = require("./lib/markTicket");
+const globalErrorHandler = require("./middlewares/globalErrorHandler");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -36,14 +36,20 @@ app.post(
 
 //routes
 app.use(express.json());
-app.post("/v1/checkout", checkout);
-app.get("/v1/checkout/callback", handlePaystackCallback);
 app.post("/v1/sponsor", sponsor);
+app.post("/v1/checkout", checkout);
 app.get("/v1/dashboard", getDashboardData);
 app.put("/v1/tickets/:ticketId/use", markTicketAsUsed);
+app.get("/v1/checkout/callback", handlePaystackCallback);
+
+app.use("/v1/auth", require("./routes/auth"));
+app.use("/v1/products", require("./routes/product"));
+app.use("/v1/checkout-shop", require("./routes/checkout"));
+app.use("/v1/orders", require("./routes/orders"));
 
 //404 route
 app.use(notFound);
+app.use(globalErrorHandler);
 
 app.listen(PORT, async () => {
   try {
