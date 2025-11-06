@@ -1,4 +1,5 @@
 const asyncHandler = require("../lib/asyncHandler");
+const CustomError = require("../lib/CustomError");
 const { OrderModel } = require("../model/order.model");
 
 exports.getOrders = asyncHandler(async (req, res) => {

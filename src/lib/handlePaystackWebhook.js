@@ -1,5 +1,6 @@
 require("dotenv").config();
 const crypto = require("crypto");
+const CustomError = require("./CustomError");
 const asyncHandler = require("./asyncHandler");
 const verifyPaystackReference = require("./verifyPaystackReference");
 const { processTicketOrder, processStoreOrder } = require("../services/orders");
