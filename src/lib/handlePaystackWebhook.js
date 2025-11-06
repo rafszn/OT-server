@@ -1,6 +1,5 @@
 require("dotenv").config();
 const crypto = require("crypto");
-const CustomError = require("./CustomError");
 const asyncHandler = require("./asyncHandler");
 const verifyPaystackReference = require("./verifyPaystackReference");
 const { processTicketOrder, processStoreOrder } = require("../services/orders");
@@ -9,7 +8,7 @@ exports.handlePaystackCallback = asyncHandler(async (req, res) => {
   const { reference } = req.query;
 
   if (!reference) {
-    throw new CustomError("Payment reference is required", 400);
+    throw new Error("Payment reference is required");
   }
 
   const paymentData = await verifyPaystackReference(reference);
