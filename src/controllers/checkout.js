@@ -53,7 +53,14 @@ exports.checkout = asyncHandler(async (req, res) => {
     currency = "NGN",
   } = productDoc;
 
-  const finalDeliveryFee = pickupOnEventDay ? 0 : fee || 0;
+  const CUTOFF = new Date("2025-11-21");
+  let pickupOnEventDayFinal = pickupOnEventDay;
+
+  if (Date.now() > CUTOFF) {
+    pickupOnEventDayFinal = true;
+  }
+
+  const finalDeliveryFee = pickupOnEventDayFinal ? 0 : fee || 0;
 
   const amount = price * quantity + finalDeliveryFee;
 
@@ -72,7 +79,7 @@ exports.checkout = asyncHandler(async (req, res) => {
     amount,
     quantity,
     currency,
-    pickupOnEventDay,
+    pickupOnEventDay: pickupOnEventDayFinal,
     calculatedDeliveryFee: finalDeliveryFee,
     product: {
       id: productId,

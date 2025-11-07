@@ -4,7 +4,7 @@ dotenv.config();
 
 const sendSellerOrderCreatedMail = async ({ html, email }) => {
   const mailOptionsResend = {
-    from: "OWERRI TECHIES HANGOUT <support@votenaija.ng>",
+    from: "OWERRI TECHIES HANGOUT <support@owerritechies.com>",
     to: [email],
     subject: `New Order Received`,
     html: html,

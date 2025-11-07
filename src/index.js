@@ -10,7 +10,7 @@ const {
   handlePaystackWebhook,
   handlePaystackCallback,
 } = require("./lib/handlePaystackWebhook");
-const { sponsor } = require("./lib/sponsor");
+const { sponsor, scholarship, giveaway } = require("./lib/sponsor");
 const { getDashboardData } = require("./lib/dashboardstats");
 const { markTicketAsUsed } = require("./lib/markTicket");
 const globalErrorHandler = require("./middlewares/globalErrorHandler");
@@ -37,6 +37,8 @@ app.post(
 //routes
 app.use(express.json());
 app.post("/v1/sponsor", sponsor);
+app.post("/v1/scholarship", scholarship);
+app.post("/v1/giveaway", giveaway);
 app.post("/v1/checkout", checkout);
 app.get("/v1/dashboard", getDashboardData);
 app.put("/v1/tickets/:ticketId/use", markTicketAsUsed);

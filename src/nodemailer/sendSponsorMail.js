@@ -4,7 +4,7 @@ dotenv.config();
 
 const sendSponsorMail = async ({ html }) => {
   const mailOptionsResend = {
-    from: "OWERRI TECHIES HANGOUT <support@votenaija.ng>",
+    from: "OWERRI TECHIES HANGOUT <support@owerritechies.com>",
     to: ["Owerritechies@gmail.com"],
     subject: `New Sponsorship Request`,
     html: html,

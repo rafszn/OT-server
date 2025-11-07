@@ -2,20 +2,19 @@ const dotenv = require("dotenv");
 const resend = require("../lib/resend/config");
 dotenv.config();
 
-const sendConfirmationMail = async ({ html, email, firstName }) => {
+const sendScholarshipMail = async ({ html }) => {
   const mailOptionsResend = {
     from: "OWERRI TECHIES HANGOUT <support@owerritechies.com>",
-    to: [email],
-    subject: `Thank you for reaching out – ${firstName}`,
+    to: ["Owerritechies@gmail.com"],
+    subject: `New Scholarship Request`,
     html: html,
   };
 
   try {
     await resend.emails.send(mailOptionsResend);
-    return res;
   } catch (error) {
     return error.message;
   }
 };
 
-module.exports = sendConfirmationMail;
+module.exports = sendScholarshipMail;
