@@ -9,7 +9,6 @@ const whitelists = [
 
 const corsOptions = {
   origin: function (origin, callback) {
-    console.log("Incoming origin:", origin);
     const localhostSubdomainRegex =
       /^http?:\/\/([a-z0-9-]+\.)*localhost:517[3-8]$/;
     if (
