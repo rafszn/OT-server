@@ -59,6 +59,7 @@ exports.scholarship = asyncHandler(async (req, res) => {
     ticketCode,
     hasTicket,
     course,
+    sociallink,
     reason,
     benefit,
     isImoState,
@@ -88,6 +89,7 @@ exports.scholarship = asyncHandler(async (req, res) => {
     <p><strong>Course:</strong> ${course || "N/A"}</p>
     <p><strong>Reason for Course:</strong> ${reason || "N/A"}</p>
     <p><strong>How it helps:</strong> ${benefit || "N/A"}</p>
+    <p><strong>Social Media Post Link:</strong> ${sociallink || "N/A"}</p>
 
     <p><strong>Based in Imo State:</strong> ${isImoState || "N/A"}</p>
     <p><strong>Address:</strong> ${address || "N/A"}</p>
@@ -118,6 +120,7 @@ exports.giveaway = asyncHandler(async (req, res) => {
     email,
     ticketCode,
     hasTicket,
+    sociallink,
     laptopReason,
     benefit,
     isImoState,
@@ -146,6 +149,7 @@ exports.giveaway = asyncHandler(async (req, res) => {
 
     <p><strong>Reason for Laptop:</strong> ${laptopReason || "N/A"}</p>
     <p><strong>How it helps:</strong> ${benefit || "N/A"}</p>
+    <p><strong>Social Media Post Link:</strong> ${sociallink || "N/A"}</p>
 
     <p><strong>Based in Imo State:</strong> ${isImoState || "N/A"}</p>
     <p><strong>Address:</strong> ${address || "N/A"}</p>
