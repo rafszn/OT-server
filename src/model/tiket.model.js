@@ -5,7 +5,11 @@ const TicketOrderSchema = new mongoose.Schema(
     firstName: { type: String, required: true, trim: true },
     lastName: { type: String, required: true, trim: true },
     email: { type: String, required: true, lowercase: true, trim: true },
-    ticketType: { type: String, enum: ["basic", "premium"], required: true },
+    ticketType: {
+      type: String,
+      enum: ["basic", "premium", "mixed"],
+      required: true,
+    },
     price: { type: Number, required: true },
     quantity: { type: Number, required: true, min: 1 },
     total: { type: Number, required: true },
@@ -18,6 +22,7 @@ const TicketOrderSchema = new mongoose.Schema(
     referralCode: {
       type: String,
     },
+    manualCreation: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
